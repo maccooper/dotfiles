@@ -2,3 +2,4 @@
 require("lco.set")
 require("lco.remap")
 require("lco.netrw")
+require("lco.packer")

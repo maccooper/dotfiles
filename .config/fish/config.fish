@@ -17,21 +17,31 @@ set -gx NVM_DIR ~/.nvm
 
 set MANPAGER 'nvim +Man!'
 
+alias find='echo "Using fd instead of find!"; fd'
+alias cat='echo "Using cat instead of bat!"; bat'
+
 # For config of dotfiles: https://www.atlassian.com/git/tutorials/dotfiles
-alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+abbr config /usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME
+abbr sshserver ssh liamcoop@100.109.140.25 -p 50022
 
-alias g="git"
-alias gs="git status"
-alias gp="git pull"
-alias gb="git branch"
-alias gch="git checkout"
-alias gc="git commit"
-alias ga="git add"
-alias server="liamcoop@192.168.1.79"
+abbr g git
+abbr gco git checkout
+abbr gc git commit
+abbr ga git add
+abbr gp git pull
+abbr gb git branch
+abbr dwr dotnet watch run
+abbr nr npm run
+abbr find fd
 
+set -gx SERVER_IP '192.168.0.74'
+alias server="-p 50022 liamcoop@$SERVER_IP"
 
-alias dwr="dotnet watch run"
-alias nr="npm run"
+# connect to sfu welcome
+alias welcome="-l lca168 -p 3222 welcomeepbc.its.sfu.ca"
+# needs to be executed after ssh welcome
+# alias jump="liam@epbc-jump.epbc.sfu.ca"
+
 
 if test -f ~/.config/fish/env.fish
     source ~/.config/fish/env.fish
