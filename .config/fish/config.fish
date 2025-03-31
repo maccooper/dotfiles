@@ -21,6 +21,7 @@ alias find='echo "Using fd instead of find!"; fd'
 alias cat='echo "Using cat instead of bat!"; bat'
 
 # For config of dotfiles: https://www.atlassian.com/git/tutorials/dotfiles
+# Consider using git stow to handle install + symlinking
 abbr config /usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME
 abbr sshserver ssh liamcoop@100.109.140.25 -p 50022
 
@@ -47,3 +48,17 @@ if test -f ~/.config/fish/env.fish
     source ~/.config/fish/env.fish
 end
 
+if test -f ~/.config/fzf/fzf.fish
+    source ~/.config/fzf/fzf.fish
+end
+
+
+set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+#set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git --exclude node_modules'
+set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+# bind <C-p> to open fzf in nvim
+function fzf_edit
+    nvim (fzf)
+end
+
+bind ctrl-p fzf_edit
