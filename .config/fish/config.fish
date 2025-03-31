@@ -58,7 +58,7 @@ set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow -g "!{.git
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 # bind <C-p> to open fzf in nvim
 function fzf_edit
-    nvim (fzf)
+    vim (fzf)
 end
 
 bind ctrl-p fzf_edit
