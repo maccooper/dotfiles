@@ -36,7 +36,12 @@ return require('packer').startup(function(use)
 	use("theprimeagen/harpoon")
 	use("mbbill/undotree")
 	use("tpope/vim-fugitive")
-
+    use({
+      "github/copilot.vim",
+      config = function()
+        vim.g.copilot_no_tab_map = true -- Optional: if you want custom keybindings
+      end
+    })
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v1.x',

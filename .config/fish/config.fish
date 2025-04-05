@@ -6,11 +6,10 @@ set -gx PATH $(go env GOPATH)/bin $PATH
 set -gx PATH /opt/homebrew/bin $PATH
 set -gx PATH /Users/liamcooper/.local/bin $PATH
 set -gx PATH /Users/liamcooper/.local/bin $PATH
+set -gx PATH $HOME/.local/bin/scripts $PATH
 
 set -gx PATH PNPM_HOME $PATH
 #export PATH="$PATH:$PNPM_HOME"
-
-#export PGDATA=/usr/local/var/postgresql@15
 
 npm config set '//npm.fontawesome.com/:_authToken' "$FONTAWESOME_NPM_AUTH_TOKEN"
 set -gx NVM_DIR ~/.nvm
@@ -28,6 +27,7 @@ abbr sshserver ssh liamcoop@100.109.140.25 -p 50022
 abbr g git
 abbr gco git checkout
 abbr gc git commit
+abbr gs git status
 abbr ga git add
 abbr gp git pull
 abbr gb git branch
@@ -43,22 +43,10 @@ alias welcome="-l lca168 -p 3222 welcomeepbc.its.sfu.ca"
 # needs to be executed after ssh welcome
 # alias jump="liam@epbc-jump.epbc.sfu.ca"
 
+bind \cf 'tmux-sessionizer'
 
 if test -f ~/.config/fish/env.fish
     source ~/.config/fish/env.fish
 end
 
-if test -f ~/.config/fzf/fzf.fish
-    source ~/.config/fzf/fzf.fish
-end
-
-
-set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
-#set -gx FZF_DEFAULT_COMMAND 'fd --type f --hidden --follow --exclude .git --exclude node_modules'
-set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-# bind <C-p> to open fzf in nvim
-function fzf_edit
-    vim (fzf)
-end
-
-bind ctrl-p fzf_edit
+task --completion fish | source
