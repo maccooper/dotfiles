@@ -1,0 +1,50 @@
+# core
+brew 'git'
+brew 'ghostty'
+brew 'tmux'
+brew 'neovim'
+
+cask 'visual-studio-code'
+
+# tiling window manager
+cask 'nikitabobko/tap/aerospace'
+
+# shells
+brew 'fish'
+brew 'zsh'
+brew 'bash'
+
+# utilities
+brew 'ripgrep'
+brew 'fd'
+brew 'fzf'
+brew 'bat'
+brew 'jq'
+
+# networking
+brew 'tailscale'
+
+# other utilities
+brew 'railway'
+brew 'docker'
+brew 'orbstack'
+brew 'spotify_player'
+
+# languages
+brew 'go'
+
+cask 'chatgpt'
+cask 'bruno'
+cask 'slack'
+cask 'raycast'
+cask 'legcord'
+cask 'github'
+cask 'spotify'
+
+# keybindings
+cask 'karabiner-elements'
+
+# databases, caching
+brew 'postgresql'
+brew 'pgcli'
+brew 'redis', restart_service: true
