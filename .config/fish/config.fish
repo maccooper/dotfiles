@@ -7,7 +7,6 @@ addToPath PNPM_HOME
 set MANPAGER 'nvim +Man!'
 
 set -gx NVM_DIR ~/.nvm
-set -gx SERVER_IP '192.168.0.74'
 
 bind \cf 'tmux-sessionizer'
 
