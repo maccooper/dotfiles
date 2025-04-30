@@ -7,7 +7,8 @@ brew 'neovim'
 cask 'visual-studio-code'
 
 # tiling window manager
-cask 'nikitabobko/tap/aerospace'
+tap "nikitabobko/tap"
+cask 'aerospace'
 
 # shells
 brew 'fish'
@@ -29,9 +30,17 @@ brew 'railway'
 brew 'docker'
 brew 'orbstack'
 brew 'spotify_player'
+brew "tealdeer"
+brew "kubernetes-cli"
 
 # languages
 brew 'go'
+brew "go-task"
+brew "goose"
+
+brew "lua"
+
+brew "nvm"
 
 cask 'chatgpt'
 cask 'bruno'

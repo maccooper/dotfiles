@@ -1,0 +1,25 @@
+[user]
+	name = Liam Cooper
+	email = liamcoop@outlook.com
+[pull]
+	ff = only
+[push]
+	autoSetupRemote = true
+[url "git@github.com:"]
+	insteadOf = "gh:"
+[alias]
+    lol = log --oneline --graph --decorate
+    graph = log --oneline --graph --decorate
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    blame = blame
+    amend = commit --amend --no-edit
+    unstage = reset HEAD --
+    undo = reset --soft HEAD^
+    undo-commit = reset --soft HEAD^
+[core]
+    editor = nvim
+        excludesFile = ~/.gitignore
+

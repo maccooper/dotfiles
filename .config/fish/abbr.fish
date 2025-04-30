@@ -1,10 +1,9 @@
-abbr g git
-abbr gco git checkout
-abbr gc git commit
-abbr gs git status
-abbr ga git add
-abbr gp git pull
-abbr gb git branch
+abbr gco 'git checkout'
+abbr gc 'git commit'
+abbr gs 'git status --short'
+abbr ga 'git add'
+abbr gp 'git pull'
+abbr gb 'git branch'
 
 abbr find fd
 abbr ev 'nvim $HOME/.config/nvim'
