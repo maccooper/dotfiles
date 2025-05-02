@@ -84,6 +84,7 @@ return {
             semanticTokensProvider = vim.NIL,
           },
         },
+        omnisharp = true,
         tailwindcss = {
           filetypes = extend("tailwindcss", "filetypes"),
           settings = {
@@ -166,6 +167,7 @@ return {
           if disable_semantic_tokens[filetype] then
             client.server_capabilities.semanticTokensProvider = nil
           end
+
 
           -- Override server capabilities
           if settings.server_capabilities then
