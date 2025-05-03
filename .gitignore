@@ -1,0 +1,9 @@
+# ignore everything
+
+# Except these folders
+!aerospace/
+!fish/
+!git/
+!nvim/
+!tmux/
+!.local/

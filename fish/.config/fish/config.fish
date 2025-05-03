@@ -6,6 +6,7 @@ addToPath PNPM_HOME
 
 set MANPAGER 'nvim +Man!'
 
+set -gx DOTFILES_DIR $HOME/.dotfiles
 set -gx NVM_DIR ~/.nvm
 
 bind \cf 'tmux-sessionizer'
