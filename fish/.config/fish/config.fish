@@ -23,4 +23,4 @@ if test -f ~/.config/fish/alias.fish
     source ~/.config/fish/alias.fish
 end
 
-task --completion fish | source
+# task --completion fish | source

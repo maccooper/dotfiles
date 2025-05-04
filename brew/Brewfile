@@ -37,6 +37,7 @@ brew "kubernetes-cli"
 brew 'go'
 brew "go-task"
 brew "goose"
+brew "node"
 
 brew "lua"
 
