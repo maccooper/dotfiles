@@ -15,23 +15,6 @@ return {
       require("dapui").setup()
       require("dap-go").setup()
 
-      require("nvim-dap-virtual-text").setup {
-        -- This just tries to mitigate the chance that I leak tokens here. Probably won't stop it from happening...
-        display_callback = function(variable)
-          local name = string.lower(variable.name)
-          local value = string.lower(variable.value)
-          if name:match "secret" or name:match "api" or value:match "secret" or value:match "api" then
-            return "*****"
-          end
-
-          if #variable.value > 15 then
-            return " " .. string.sub(variable.value, 1, 15) .. "... "
-          end
-
-          return " " .. variable.value
-        end,
-      }
-
       -- Handled by nvim-dap-go
       -- dap.adapters.go = {
       --   type = "server",
@@ -41,26 +24,47 @@ return {
       --     args = { "dap", "-l", "127.0.0.1:${port}" },
       --   },
       -- }
+      --
+      --
 
-      local elixir_ls_debugger = vim.fn.exepath "elixir-ls-debugger"
-      if elixir_ls_debugger ~= "" then
-        dap.adapters.mix_task = {
+      dap.adapters.node2 = {
           type = "executable",
-          command = elixir_ls_debugger,
-        }
-
-        dap.configurations.elixir = {
-          {
-            type = "mix_task",
-            name = "phoenix server",
-            task = "phx.server",
-            request = "launch",
-            projectDir = "${workspaceFolder}",
-            exitAfterTaskReturns = false,
-            debugAutoInterpretAllModules = false,
+          command = "node",
+          args = {
+              vim.fn.stdpath('data') .. "/mason/packages/node-debug2-adapter/out/src/nodeDebug.js",
           },
-        }
-      end
+      }
+
+      dap.configurations.javascript = {
+        {
+          name = 'Attach to Next.js',
+          type = 'node2',
+          request = 'attach',
+          address = 'localhost',
+          port = 9229,
+          restart = false,
+          sourceMaps = true,
+          protocol = 'inspector',
+          skipFiles = { "<node_internals>/**" },
+        },
+      }
+
+      dap.configurations.typescript = dap.configurations.javascript
+
+      dap.adapters.coreclr = {
+        type = 'executable',
+        command = 'netcoredbg',
+        args = { '--interpreter=vscode' },
+      }
+
+      dap.configurations.cs = {
+          {
+              type = 'coreclr',
+              name = 'attach to process',
+              request = 'attach',
+              processId = require('dap.utils').pick_process,
+          }
+      }
 
       vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
       vim.keymap.set("n", "<space>gb", dap.run_to_cursor)

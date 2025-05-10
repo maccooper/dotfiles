@@ -6,4 +6,6 @@
 !git/
 !nvim/
 !tmux/
-!.local/
+!.local/bin
+
+local/.local
