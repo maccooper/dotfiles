@@ -25,7 +25,7 @@ end
 
 starship init fish | source
 
-# task --completion fish | source
+#task --completion fish | source
 
 # alt ssh liamcooper@homelab
 abbr sshhomelab  'ssh liamcooper@100.122.140.127'
