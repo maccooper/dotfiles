@@ -11,3 +11,4 @@ stow local
 stow nvim
 stow tmux
 stow ghostty
+stow starship

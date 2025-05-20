@@ -23,4 +23,13 @@ if test -f ~/.config/fish/alias.fish
     source ~/.config/fish/alias.fish
 end
 
+starship init fish | source
+
 # task --completion fish | source
+
+# alt ssh liamcooper@homelab
+abbr sshhomelab  'ssh liamcooper@100.122.140.127'
+# alt: ssh liamcooper@mediaserver
+abbr sshmedia  'ssh liamcooper@100.83.103.5'
+abbr sshepbc 'ssh liamcooper@100.104.205.105'
+abbr sshpersonal 'ssh liamcooper@100.66.244.15'

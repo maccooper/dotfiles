@@ -35,36 +35,38 @@ return {
           },
       }
 
-      dap.configurations.javascript = {
+      local js_config = {
         {
-          name = 'Attach to Next.js',
           type = 'node2',
+          name = 'Attach to Next.js',
           request = 'attach',
-          address = 'localhost',
-          port = 9229,
-          restart = false,
-          sourceMaps = true,
+          processId = require'dap.utils'.pick_process,
+          cwd = vim.fn.getcwd(),
           protocol = 'inspector',
-          skipFiles = { "<node_internals>/**" },
+          sourceMaps = true,
+          skipFiles = { '<node_internals>/**' },
         },
       }
 
-      dap.configurations.typescript = dap.configurations.javascript
+      dap.configurations.javascript = js_config
+      dap.configurations.typescript = js_config
+      dap.configurations.javascriptreact = js_config
+      dap.configurations.typescriptreact = js_config
 
-      dap.adapters.coreclr = {
-        type = 'executable',
-        command = 'netcoredbg',
-        args = { '--interpreter=vscode' },
-      }
+      --dap.adapters.coreclr = {
+      --  type = 'executable',
+      --  command = 'netcoredbg',
+      --  args = { '--interpreter=vscode' },
+      --}
 
-      dap.configurations.cs = {
-          {
-              type = 'coreclr',
-              name = 'attach to process',
-              request = 'attach',
-              processId = require('dap.utils').pick_process,
-          }
-      }
+      --dap.configurations.cs = {
+      --    {
+      --        type = 'coreclr',
+      --        name = 'attach to process',
+      --        request = 'attach',
+      --        processId = require('dap.utils').pick_process,
+      --    }
+      --}
 
       vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
       vim.keymap.set("n", "<space>gb", dap.run_to_cursor)

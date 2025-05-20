@@ -8,4 +8,34 @@ return {
   -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
+
+  config = function()
+    local oil = require("oil")
+    local icons = require("mini.icons")
+
+    oil.setup({
+      columns = {
+        "icon",
+        "permissions",
+        "size",
+        "mtime",
+      },
+      win_options = {
+        wrap = false,
+      },
+      keymaps = {
+        ["-"] = "actions.oil",
+        ["<C-]>"] = "actions.cd",
+        ["<C-e>"] = "actions.edit",
+        ["<C-h>"] = "actions.toggle_help",
+        ["<C-i>"] = "actions.toggle_hidden",
+        ["<C-n>"] = "actions.newfile",
+        ["<C-r>"] = "actions.rename",
+        ["<C-s>"] = "actions.select",
+        ["<C-t>"] = "actions.cd",
+        ["<C-u>"] = "actions.up",
+      },
+      use_default_keymaps = false,
+    })
+  end,
 }

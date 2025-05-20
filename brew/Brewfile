@@ -21,6 +21,7 @@ brew 'fd'
 brew 'fzf'
 brew 'bat'
 brew 'jq'
+brew 'starship'
 
 # networking
 brew 'tailscale'

@@ -1,10 +1,5 @@
--- order of imports matters, leader import must happen before it is consumed
-require("custom.remap")
-require("custom.netrw")
-require("custom.autocmds")
-require("custom.copilot")
-require("custom.options")
-
+vim.g.mapleader = " "
+vim.o.timeoutlen = 300
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -34,5 +29,11 @@ require("lazy").setup({ import = "custom/plugins" }, {
     },
 })
 
-vim.g.mapleader = " "
-vim.o.timeoutlen = 300
+-- order of imports matters, leader import must happen before it is consumed
+require("custom.remap")
+require("custom.netrw")
+require("custom.autocmds")
+require("custom.copilot")
+require("custom.options")
+
+
