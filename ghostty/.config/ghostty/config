@@ -1,2 +1,2 @@
-theme = "GruvboxLight"
+theme = catpuccin-frappe.conf
 confirm-close-surface = false
