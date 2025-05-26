@@ -1,14 +1,23 @@
 add_newline = false
 
 format = """$directory$character"""
-right_format = """$all"""
+# right_format = """$all"""
 
 [directory]
 truncation_length = 2
 
 [git_branch]
-symbol = '🌿 '
-ignore_branches = ['master', 'main', 'develop']
+disabled = false
+ignore_branches = ["master", "main", "develop"]
 
 [git_status]
+disabled = true
+
+[package]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[nodejs]
 disabled = true
