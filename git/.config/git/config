@@ -21,7 +21,7 @@
     undo-commit = reset --soft HEAD^
 [core]
     editor = nvim
-        excludesFile = ~/.gitignore
+    excludesFile = ~/.gitignore
 
 [status]
     branch = true
