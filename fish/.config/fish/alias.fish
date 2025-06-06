@@ -1,9 +1,3 @@
-<<<<<<< Updated upstream
-
-alias find='echo "Using fd instead of find!"; fd'
-
-=======
->>>>>>> Stashed changes
 alias welcome="-l lca168 -p 3222 welcomeepbc.its.sfu.ca"
 # alias jump="liam@epbc-jump.epbc.sfu.ca"
 alias server="-p 50022 liamcoop@$SERVER_IP"
