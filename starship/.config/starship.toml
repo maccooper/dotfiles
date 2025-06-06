@@ -9,6 +9,7 @@ truncation_length = 2
 [git_branch]
 disabled = false
 ignore_branches = ["master", "main", "develop"]
+symbol = '🌿 '
 
 [git_status]
 disabled = true

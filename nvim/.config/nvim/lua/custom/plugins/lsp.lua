@@ -63,7 +63,6 @@ return {
             local servers = {
                 bashls = true,
                 gopls = {
-                    manual_install = true,
                     settings = {
                         gopls = {
                             hints = {
