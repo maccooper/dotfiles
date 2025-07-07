@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   opts = {
-    provider = "copilot",
+    provider = "claude",
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   -- build = "make BUILD_FROM_SOURCE=true",
@@ -45,5 +45,6 @@ return {
       },
       ft = { "markdown", "Avante" },
     },
+    enabled = false,
   },
 }

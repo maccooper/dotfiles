@@ -1,0 +1,66 @@
+# https://www.joshmedeski.com/posts/macos-keyboard-shortcuts-for-tmux/
+
+
+# split tmux window vertically
+[[keyboard.bindings]]
+key = "E"
+mods = "Command"
+chars = "\u0002\""
+
+# split tmux window horizontally
+[[keyboard.bindings]]
+key = "E"
+mods = "Command|Shift"
+chars = "\u0002%"
+
+# open last tmux session
+[[keyboard.bindings]]
+key = "L"
+mods = "Command"
+chars = "\u0002L"
+
+# <Command + 1-9> to switch to tmux windows 1-9
+[[keyboard.bindings]]
+key = "Key1"
+mods = "Command"
+chars = "\u00021"
+
+[[keyboard.bindings]]
+key = "Key2"
+mods = "Command"
+chars = "\u00022"
+
+[[keyboard.bindings]]
+key = "Key3"
+mods = "Command"
+chars = "\u00023"
+
+[[keyboard.bindings]]
+key = "Key4"
+mods = "Command"
+chars = "\u00024"
+
+[[keyboard.bindings]]
+key = "Key5"
+mods = "Command"
+chars = "\u00025"
+
+[[keyboard.bindings]]
+key = "Key6"
+mods = "Command"
+chars = "\u00026"
+
+[[keyboard.bindings]]
+key = "Key7"
+mods = "Command"
+chars = "\u00027"
+
+[[keyboard.bindings]]
+key = "Key8"
+mods = "Command"
+chars = "\u00028"
+
+[[keyboard.bindings]]
+key = "Key9"
+mods = "Command"
+chars = "\u00029"
