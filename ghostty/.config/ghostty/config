@@ -1,2 +1,22 @@
 theme = catpuccin-mocha.conf
 confirm-close-surface = false
+
+# Split tmux vertically (Command+E → Ctrl+b ")
+keybind = super+e=text:\x02\"
+
+# Split tmux horizontally (Command+Shift+E → Ctrl+b %)
+keybind = super+shift+e=text:\x02%
+
+# Open last tmux session (Command+L → Ctrl+b L)
+keybind = super+l=text:\x02L
+
+# Switch tmux windows 1–9 (Command+1–9 → Ctrl+b 1–9)
+keybind = super+1=text:\x021
+keybind = super+2=text:\x022
+keybind = super+3=text:\x023
+keybind = super+4=text:\x024
+keybind = super+5=text:\x025
+keybind = super+6=text:\x026
+keybind = super+7=text:\x027
+keybind = super+8=text:\x028
+keybind = super+9=text:\x029
