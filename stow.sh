@@ -12,3 +12,5 @@ stow nvim
 stow tmux
 stow ghostty
 stow starship
+stow ai
+stow claude
