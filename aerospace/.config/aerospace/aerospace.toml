@@ -64,9 +64,9 @@ outer.top =        0
 outer.right =      0
 
 [workspace-to-monitor-force-assignment]
-    1 = '^dell*'
-    2 = '^dell*'
-    3 = '^dell*'
+    1 = ['^dell*', '^u32j59x']
+    2 = ['^dell*', '^u32j59x']
+    3 = ['^dell*', '^u32j59x']
     4 = '^built-in retina display$' 
     5 = '^built-in retina display$' 
     6 = '^built-in retina display$' 

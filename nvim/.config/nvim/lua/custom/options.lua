@@ -10,14 +10,18 @@ opt.expandtab = true
 
 opt.smartindent = true
 
-opt.wrap = false
+-- Line break options
+opt.wrap = true
+opt.linebreak = true
+opt.showbreak = "↪ "
+opt.breakindent = true
 
 opt.swapfile = false
 opt.backup = false
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
 
-opt.hlsearch = false
+opt.hlsearch = true
 opt.incsearch = true
 
 opt.termguicolors = true
@@ -28,4 +32,4 @@ opt.isfname:append("@-@")
 
 opt.updatetime = 50
 
-opt.colorcolumn = "80"
+--opt.colorcolumn = "80"

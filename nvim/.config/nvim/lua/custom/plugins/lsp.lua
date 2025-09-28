@@ -155,6 +155,7 @@ return {
                         vim.lsp.buf.definition()
                     end, { desc = "Go to definition in vertical split" })
                     vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
+                    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = 0 })
                     vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
                     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 
