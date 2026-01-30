@@ -15,9 +15,14 @@ return {
                     },
                 },
             },
-            { "Bilal2453/luvit-meta",                        lazy = true },
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+            { "Bilal2453/luvit-meta",   lazy = true },
+            { "williamboman/mason.nvim" },
+            {
+                "williamboman/mason-lspconfig.nvim",
+                exclude = {
+                    'jdtls'
+                }
+            },
             "WhoIsSethDaniel/mason-tool-installer.nvim",
 
             { "j-hui/fidget.nvim",                           opts = {} },
