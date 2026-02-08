@@ -14,3 +14,4 @@ stow ghostty
 stow starship
 stow ai
 stow claude
+stow leetcode

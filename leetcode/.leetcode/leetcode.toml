@@ -1,0 +1,20 @@
+[code]
+editor = 'nvim'
+lang = 'golang'
+edit_code_marker = false
+start_marker = ""
+end_marker = ""
+comment_problem_desc = false
+comment_leading = ""
+test = true
+
+[cookies]
+csrf = '${LEETCODE_CSRF}'
+session = '${LEETCODE_SESSION}'
+site = "leetcode.com"
+
+[storage]
+cache = 'Problems'
+code = 'code'
+root = '~/.leetcode'
+scripts = 'scripts'
