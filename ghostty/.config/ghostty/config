@@ -1,5 +1,7 @@
 theme = catpuccin-mocha.conf
 confirm-close-surface = false
+working-directory = home
+window-inherit-working-directory = false
 
 # Split tmux vertically (Command+E → Ctrl+b ")
 keybind = super+e=text:\x02\"
