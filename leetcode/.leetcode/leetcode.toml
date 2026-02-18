@@ -1,20 +1,15 @@
 [code]
-editor = 'nvim'
-lang = 'golang'
-edit_code_marker = false
-start_marker = ""
-end_marker = ""
-comment_problem_desc = false
-comment_leading = ""
+editor = "nvim"
 test = true
+lang = "golang"
 
 [cookies]
-csrf = '${LEETCODE_CSRF}'
-session = '${LEETCODE_SESSION}'
+csrf = "7S7kxgZ4BDmG9Ham5qkqe4V1B0sUQ51j"
+session = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfYXV0aF91c2VyX2lkIjoiMTI4Mzg1NyIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImFsbGF1dGguYWNjb3VudC5hdXRoX2JhY2tlbmRzLkF1dGhlbnRpY2F0aW9uQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6ImE5MGNlZGZlYTFiZjY3MjE0NmU1ZTM5YWVlNDc5NDI4NzI4NWM1MWM2Y2IzZTY0MmNlZmQxYjRhZDUzY2JlOWQiLCJzZXNzaW9uX3V1aWQiOiJhN2IwM2I2YSIsImlkIjoxMjgzODU3LCJlbWFpbCI6Ik1hY2tlbnppZS5Db29wZXI5OUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Ik1hY2tjb29wZXIiLCJ1c2VyX3NsdWciOiJNYWNrY29vcGVyIiwiYXZhdGFyIjoiaHR0cHM6Ly9hc3NldHMubGVldGNvZGUuY29tL3VzZXJzL2RlZmF1bHRfYXZhdGFyLmpwZyIsInJlZnJlc2hlZF9hdCI6MTc3MDQ5MzY4MiwiaXAiOiIyMDAxOjU2OTpiZWJjOjk2MDA6YWNlZTphNDliOmE3OjRiNzAiLCJpZGVudGl0eSI6ImE3Yjg1NGYwZmM3ZjIzNGIwNzRkN2U2YWY2YjA5MjhhIiwiZGV2aWNlX3dpdGhfaXAiOlsiYmRjMWRmZjdlMzVmZmEyOTc0NjUwMTQ2OWQxNzZjYmEiLCIyMDAxOjU2OTpiZWJjOjk2MDA6YWNlZTphNDliOmE3OjRiNzAiXSwiX3Nlc3Npb25fZXhwaXJ5IjoxMjA5NjAwfQ.0_HpFCxwq1ga5qVUgPhEOYAKt2j_IPUzKaasMsMZ6Aw"
 site = "leetcode.com"
 
 [storage]
-cache = 'Problems'
-code = 'code'
-root = '~/.leetcode'
-scripts = 'scripts'
+cache = "Problems"
+code = "code"
+root = "~/.leetcode"
+scripts = "scripts"

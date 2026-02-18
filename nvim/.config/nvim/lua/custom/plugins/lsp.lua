@@ -64,6 +64,7 @@ return {
 
             local servers = {
                 bashls = true,
+                jsonls = true,
                 gopls = {
                     settings = {
                         gopls = {
