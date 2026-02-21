@@ -65,6 +65,8 @@ return {
             local servers = {
                 bashls = true,
                 jsonls = true,
+                html = true,
+                cssls = true,
                 gopls = {
                     settings = {
                         gopls = {
