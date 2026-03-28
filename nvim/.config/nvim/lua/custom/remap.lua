@@ -13,7 +13,6 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "vv", "<C-w>v")
 
-vim.keymap.set("n", "<leader>r", "<cmd>edit<CR>", { desc = "Reload file from disk" })
 vim.keymap.set("n", "<leader>wd", function()
     local path
     if vim.b.netrw_curdir then
