@@ -10,6 +10,9 @@ return {
             local dap = require "dap"
             local dap_go = require "dap-go"
 
+            vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint" })
+            vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DapBreakpointCondition" })
+
             require("dap-go").setup()
 
             dap.configurations.go = dap.configurations.go or {}
@@ -71,19 +74,22 @@ return {
                 vim.keymap.set("n", "<Esc>", "<cmd>close<cr>", { buffer = buf, silent = true })
             end
 
-            -- Harpoon-style floating breakpoint navigator
+            -- Floating breakpoint navigator
             local function list_breakpoints()
                 local bps = require("dap.breakpoints").get()
                 local entries = {}
                 for bufnr, buf_bps in pairs(bps) do
                     local fname = vim.api.nvim_buf_get_name(bufnr)
-                    local short = vim.fn.fnamemodify(fname, ":~:.")
+                    local short = vim.fn.fnamemodify(fname, ":t")
                     for _, bp in ipairs(buf_bps) do
+                        local line_content = vim.api.nvim_buf_get_lines(bufnr, bp.line - 1, bp.line, false)[1] or ""
+                        line_content = line_content:match("^%s*(.-)%s*$")
                         table.insert(entries, {
                             bufnr = bufnr,
                             lnum = bp.line,
-                            short = short,
-                            condition = bp.condition,
+                            ref = string.format("%s:%d", short, bp.line),
+                            content = line_content,
+                            conditional = bp.condition ~= nil,
                         })
                     end
                 end
@@ -92,25 +98,39 @@ return {
                     return
                 end
                 table.sort(entries, function(a, b)
-                    return a.short < b.short or (a.short == b.short and a.lnum < b.lnum)
+                    return a.ref < b.ref
                 end)
 
-                local lines = {}
+                local ns = vim.api.nvim_create_namespace("dap_bp_nav")
+                local col_width = 0
                 for _, e in ipairs(entries) do
-                    local cond = e.condition and ("  [" .. e.condition .. "]") or ""
-                    table.insert(lines, string.format("  %s:%d%s", e.short, e.lnum, cond))
+                    col_width = math.max(col_width, #e.ref)
                 end
 
-                local width = math.min(60, vim.o.columns - 4)
+                local function render(target_buf)
+                    local lines = {}
+                    for _, e in ipairs(entries) do
+                        local marker = e.conditional and "◆ " or "  "
+                        table.insert(lines, string.format("%s%-" .. col_width .. "s   %s", marker, e.ref, e.content))
+                    end
+                    vim.bo[target_buf].modifiable = true
+                    vim.api.nvim_buf_set_lines(target_buf, 0, -1, false, lines)
+                    vim.api.nvim_buf_clear_namespace(target_buf, ns, 0, -1)
+                    for i in ipairs(entries) do
+                        vim.api.nvim_buf_add_highlight(target_buf, ns, "Comment", i - 1, 2, 2 + col_width + 2)
+                    end
+                    vim.bo[target_buf].modifiable = false
+                end
+
+                local width = math.min(72, vim.o.columns - 4)
                 local buf = vim.api.nvim_create_buf(false, true)
-                vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-                vim.bo[buf].modifiable = false
+                render(buf)
 
                 local win = vim.api.nvim_open_win(buf, true, {
                     relative = "editor",
                     width = width,
-                    height = #lines,
-                    row = math.floor((vim.o.lines - #lines) / 2),
+                    height = #entries,
+                    row = math.floor((vim.o.lines - #entries) / 2),
                     col = math.floor((vim.o.columns - width) / 2),
                     style = "minimal",
                     border = "rounded",
@@ -136,17 +156,9 @@ return {
                         vim.api.nvim_win_close(win, true)
                         return
                     end
-                    local updated = {}
-                    for _, entry in ipairs(entries) do
-                        local cond = entry.condition and ("  [" .. entry.condition .. "]") or ""
-                        table.insert(updated, string.format("  %s:%d%s", entry.short, entry.lnum, cond))
-                    end
-                    vim.bo[buf].modifiable = true
-                    vim.api.nvim_buf_set_lines(buf, 0, -1, false, updated)
-                    vim.bo[buf].modifiable = false
+                    render(buf)
                     vim.api.nvim_win_set_height(win, #entries)
-                    local new_idx = math.min(idx, #entries)
-                    vim.api.nvim_win_set_cursor(win, { new_idx, 0 })
+                    vim.api.nvim_win_set_cursor(win, { math.min(idx, #entries), 0 })
                 end, { buffer = buf, silent = true })
 
                 vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf, silent = true })
@@ -154,9 +166,27 @@ return {
             end
 
             -- Keymaps
-            vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
+            vim.keymap.set("n", "<space>b", function()
+                local line = vim.api.nvim_get_current_line()
+                if line:match("^%s*$") then
+                    vim.notify("Can't set breakpoint on empty line", vim.log.levels.WARN)
+                    return
+                end
+                dap.toggle_breakpoint()
+            end)
             vim.keymap.set("n", "<space>B", function()
-                dap.set_breakpoint(vim.fn.input("Condition: "))
+                local line = vim.api.nvim_get_current_line()
+                if line:match("^%s*$") then
+                    vim.notify("Can't set breakpoint on empty line", vim.log.levels.WARN)
+                    return
+                end
+                local condition = vim.fn.input("Condition: ")
+                if condition == "" then return end
+                if condition:match("^%s*if%s") or condition:match("^%s*for%s") or condition:match("^%s*var%s") or condition:match("^%s*func%s") then
+                    vim.notify("Condition must be an expression (e.g. x > 0, err != nil)", vim.log.levels.WARN)
+                    return
+                end
+                dap.set_breakpoint(condition)
             end, { desc = "Conditional Breakpoint" })
             vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
 
@@ -177,6 +207,14 @@ return {
             vim.keymap.set("n", "<leader>dgl", function()
                 dap_go.debug_last_test()
             end, { desc = "Debug Last Go Test" })
+
+            -- Surface invalid breakpoint conditions
+            dap.listeners.after.event_breakpoint["notify_unverified"] = function(_, body)
+                if body and body.breakpoint and body.breakpoint.verified == false then
+                    local msg = body.breakpoint.message or "invalid breakpoint"
+                    vim.notify("Breakpoint rejected: " .. msg, vim.log.levels.WARN)
+                end
+            end
 
             -- Statusline color indicator
             local orig_statusline = vim.api.nvim_get_hl(0, { name = "StatusLine" })
