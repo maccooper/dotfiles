@@ -23,7 +23,7 @@ return {
                 type = "go",
                 name = "Debug API Server",
                 request = "launch",
-                program = "./cmd/api", --
+                program = "./cmd/server",
                 args = {},
                 cwd = vim.fn.getcwd(), -- Use current directory
             })
