@@ -7,8 +7,11 @@
 !nvim/
 !tmux/
 !.local/bin
+!claude/
 
 claude/.claude/settings.local.json
-claude/.claude/settings.json
 
 local/.local
+
+leetcode/.leetcode/leetcode.toml
+raycast/.config/raycast/config.json

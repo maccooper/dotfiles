@@ -64,12 +64,12 @@ outer.top =        0
 outer.right =      0
 
 [workspace-to-monitor-force-assignment]
-    1 = ['^dell*', '^u32j59x']
-    2 = ['^dell*', '^u32j59x']
-    3 = ['^dell*', '^u32j59x']
-    4 = '^built-in retina display$' 
-    5 = '^built-in retina display$' 
-    6 = '^built-in retina display$' 
+    1 = ['main', 'built-in retina display']
+    2 = ['main', 'built-in retina display']
+    3 = ['main', 'built-in retina display']
+    4 = ['secondary', 'main']
+    5 = ['secondary', 'main']
+    6 = ['secondary', 'main']
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
