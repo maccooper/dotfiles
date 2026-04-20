@@ -1,5 +1,6 @@
 return {
   "zbirenbaum/copilot.lua",
+  enabled = false,
   cmd = "Copilot",
   build = ":Copilot auth",
   event = "BufReadPost",
@@ -16,7 +17,7 @@ return {
     },
     panel = { enabled = false },
     filetypes = {
-      markdown = true,
+      markdown = false,
       help = true,
     },
   },
