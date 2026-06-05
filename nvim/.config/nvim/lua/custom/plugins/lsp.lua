@@ -70,6 +70,9 @@ return {
                 gopls = {
                     settings = {
                         gopls = {
+                            analyses = {
+                                intrange = false,
+                            },
                             hints = {
                                 assignVariableTypes = true,
                                 compositeLiteralFields = true,
